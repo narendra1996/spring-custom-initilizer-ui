@@ -1,0 +1,6 @@
+<ng-container *ngFor="let obj of list">
+  <a class="radio" (click)="onSelect(obj.id)"
+    [ngClass]="{'checked': selected === obj.id }">
+    {{obj.name}}
+  </a>
+</ng-container>

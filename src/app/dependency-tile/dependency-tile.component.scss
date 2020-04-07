@@ -1,0 +1,74 @@
+.checked {
+    background: white;
+    box-shadow: 0 2px 5px 1px rgba(0,0,0,0.2);
+}
+.hovered {
+    background:rgb(235, 243, 247);
+    box-shadow: 0 2px 5px 1px rgba(0,0,0,0.1);
+}
+a {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    padding: 16px;
+    padding-right: 60px;
+    color: rgba(34,34,34,0.8);
+    background: #f7f7f7;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    line-height: 24px;
+    letter-spacing: 0px;
+    input {
+        display: none;
+    }
+    strong {
+    color: #222;
+    font-weight: 600;
+    } 
+    span {
+        font-size: 13px;
+        font-weight: 500;
+    }
+    .icon {
+        position: absolute;
+        display: block;
+        border: 2px solid #e4e4e4;
+        height: 24px;
+        width: 24px;
+        margin-top: -12px;
+        top: 50%;
+        right: 16px;
+        border-radius: 14px;
+        color: #222;
+        .plus {
+            top: 5px;
+            left: 5px;
+        }
+        .check {
+            top: 5px;
+            left: 5px;
+            color: #6db33f;
+        }
+        .times {
+            top: 5px;
+            left: 6px;
+            color:red;
+        }
+    }
+    i {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        width: 8px;
+        transition: all .15s;
+    }
+}
+
+.dependency-grid {
+    padding-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 8px 10px;
+}

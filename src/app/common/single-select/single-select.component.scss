@@ -1,0 +1,17 @@
+.radio {
+    display: inline-block;
+    border-bottom: 3px solid #e4e4e4;
+    // line-height: 32px;
+    color:#888;
+    padding: 0 16px;
+    // text-align: center;
+    cursor: pointer;
+    margin-right: 4px;
+    // transition: all .15s;
+    // outline: 1px dotted transparent;
+    // font-size: 15px;
+}
+.checked {
+    border-bottom-color: #6db33f;
+    color: black;
+}

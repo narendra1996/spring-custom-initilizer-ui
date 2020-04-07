@@ -1,0 +1,25 @@
+<ng-container *ngIf="metaData">
+  <ng-container *ngFor="let d of metaData.dependencies.values[index].values; let j = index">
+    <ng-container
+      *ngIf="showAll || (showSelected && d.selected) || (showFiltered && !d.selected && metaData.searchFilterText && metaData.searchFilterText.length >0 &&
+    (metaData.dependencies.values[index].name.toLowerCase().indexOf(metaData.searchFilterText) != -1 ||
+      d.name.toLowerCase().indexOf(metaData.searchFilterText) !=-1 || d.description.toLowerCase().indexOf(metaData.searchFilterText) !=-1 ))">
+      <div class="dependency-grid">
+        <a [ngClass]="{'checked': d.selected,'hovered': d.hovered && !d.selected}" (click)="onDependencySelect(index,j)"
+          (mouseenter)="hoverDependency(index,j)" (mouseleave)="hoverDependency(index,j)">
+          <div>
+            <input type="checkbox" value="custom-dependency">
+            <strong>{{d.name}}</strong>
+            <br>
+            <span>{{d.description}}</span>
+            <span class="icon">
+              <i *ngIf="d.hovered && !d.selected" class="fas fa-plus fa-sm plus"></i>
+              <i *ngIf="d.hovered && d.selected" class="fas fa-times fa-sm times"></i>
+              <i *ngIf="!d.hovered && d.selected" class="fas fa-check fa-sm check"></i>
+            </span>
+          </div>
+        </a>
+      </div>
+    </ng-container>
+  </ng-container>
+</ng-container>

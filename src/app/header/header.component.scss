@@ -1,0 +1,33 @@
+.header {
+    h1.logo {
+        margin: 0px 20px 0px 24px;
+        padding: 16px 0px;
+        a {
+            display: block;
+            position: relative;
+            padding: 4px 0;
+            padding-left: 65px;
+            color: #000;
+            text-decoration: none;
+            font-size: 1rem;
+            line-height: 1.6rem;
+            font-weight: normal;
+            outline: 1px dotted transparent;
+            svg {
+                width: 50px;
+                position: absolute;
+                left: 0;
+                top: 6px;
+                color: #6db33f;
+            }
+            span.title {
+                display: block;
+                font-size: 1.4rem;
+                font-weight: normal;
+            }
+            strong {
+                color: #6db33f;
+            }
+        }
+    }
+}

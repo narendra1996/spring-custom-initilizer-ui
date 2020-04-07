@@ -1,21 +1,138 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="content" *ngIf="metaData">
+  <div class="section">
+    <div class="left">Project</div>
+    <div class="right">
+      <app-single-select [value] = "'type'"></app-single-select>
+    </div>
+  </div>
+  <div class="section">
+    <div class="left">Language</div>
+    <div class="right">
+      <div>
+        <app-single-select [value] = "'language'"></app-single-select>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="left">Spring Boot</div>
+    <div class="right">
+      <app-single-select [value] = "'bootVersion'"></app-single-select>
+    </div>
+  </div>
+  <div class="section">
+    <div class="left">Project Metadata</div>
+    <div class="right">
+      <div class="grid">
+        <div class="item" *ngIf="metaData">
+          <label for="groupId">Group</label>
+          <input type="text" id="groupId" class="control-input" (input)="onSubmit($event.target.value, 'groupId')"
+            [value]="metaData.groupId.default">
+        </div>
+        <div class="item" *ngIf="metaData">
+          <label for="artifactId">Artifact</label>
+          <input type="text" id="artifactId" class="control-input" (input)="onSubmit($event.target.value, 'artifactId')"
+            [value]="metaData.artifactId.default">
+        </div>
+        <div class="item" *ngIf="metaData">
+          <label for="name">Name</label>
+          <input type="text" id="name" class="control-input" (input)="onSubmit($event.target.value, 'name')"
+            [value]="metaData.name.default">
+        </div>
+        <div class="item" *ngIf="metaData">
+          <label for="packageName">Package name</label>
+          <input type="text" id="packageName" class="control-input"
+            (input)="onSubmit($event.target.value, 'packageName')" [value]="metaData.packageName.default">
+        </div>
+        <div class="item" *ngIf="metaData">
+          <label for="description">Description</label>
+          <input type="text" id="description" class="control-input"
+            (input)="onSubmit($event.target.value, 'description')" [value]="metaData.description.default">
+        </div>
+        <div class="item" *ngIf="metaData">
+          <label for="packaging">Packaging</label>
+          <app-single-select [value] = "'packaging'"></app-single-select>
+        </div>
+        <div class="item" *ngIf="metaData">
+          <label for="javaVersion">Java</label>
+          <app-single-select [value] = "'javaVersion'"></app-single-select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section sticky" *ngIf="metaData">
+    <div class="left">Dependencies</div>
+    <div class="right">
+      <div class="dependencies-box">
+        <div class="tab">
+          <div class="tab-container">
+            <a [ngClass]="{'active': isSearchSelected}" (click)="toggleSearchAndList(true)">
+              <i class="fas fa-search fa-sm"></i>
+            </a>
+            <a [ngClass]="{'active': !isSearchSelected}" (click)="toggleSearchAndList(false)">
+              <i class="fas fa-list fa-sm"></i>
+            </a>
+            <strong *ngIf="metaData.selectedDependencyCount>0">
+              <span>{{metaData.selectedDependencyCount}}</span>
+              selected
+            </strong>
+          </div>
+        </div>
+        <div class="colset-2" *ngIf="isSearchSelected">
+          <div class="column groups">
+            <label for="quicksearch">Search dependencies to add</label>
+            <input type="text" class="control-input" placeholder="Web, Security, JPA, Actuator, Devtools..."
+              id="inputQquickSearch" [value]="metaData.searchFilterText" (input)="onSearch($event.target.value)">
+            <ul class="group">
+              <li *ngFor="let l of metaData.dependencies.values; let i = index">
+                <app-dependency-tile [metaData]="metaData" [index]="i" [showFiltered]="true"></app-dependency-tile>
+              </li>
+            </ul>
+          </div>
+          <div class="column right groups">
+            <label>Selected dependencies</label>
+            <ul class="group">
+              <li *ngFor="let l of metaData.dependencies.values; let i = index">
+                <app-dependency-tile [metaData]="metaData" [index]="i" [showSelected]="true"></app-dependency-tile>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section" *ngIf="!isSearchSelected">
+    <div class="left"></div>
+    <div class="right">
+      <div class="groups" *ngIf="metaData">
+        <div class="group" *ngFor="let l of metaData.dependencies.values; let i = index">
+          <div class="group-title">
+            <a (click)="onDependencyListSelect(i)">
+              <i *ngIf="!l.selected" class="fas fa-chevron-right fa-sm"></i>
+              <i *ngIf="l.selected" class="fas fa-chevron-down fa-sm"></i>
+              {{l.name}}
+            </a>
+          </div>
+          <app-dependency-tile class="dependency-grid" *ngIf="l.selected" [metaData]="metaData" [index]="i"
+            [showAll]="true"></app-dependency-tile>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
+<!-- <div class="overlay">
+  <div class="modal-explorer">
+    <div>
+      <div class="colset-explorer">
+        <div class="head"> 
+          <strong>pom.xml</strong>
+          <i class="fas fa-times fa-sm times times" (click)="onClose()"></i>
+        </div>
+        <div class="content">
+          <pre>{{metaData.pom}}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
 <router-outlet></router-outlet>
