@@ -8,20 +8,18 @@
     .section {
         display: flex;
         flex-wrap: wrap;
-        margin-right: -15px;
-        margin-left: -15px;
-        min-height: 65px;
+        min-height: 50px;
         .left {
             flex: 0 0 25%;
             max-width: 25%;
             width: 280px;
             text-align: right;
-            padding: 8px 32px 8px 0px;
+            padding: 0px 32px 8px 0px;
         }
         .right {
             flex: 0 0 70%;
             max-width: 70%;
-            padding: 8px 0px 8px 32px;
+            padding: 0px 0px 8px 32px;
             .radio {
                 display: inline-block;
                 border-bottom: 3px solid #e4e4e4;
@@ -182,66 +180,3 @@
     grid-gap: 8px 10px;
 }
 
-.overlay {
-    background: rgba(255,255,255,0.6);
-    display: flex;
-    align-items: flex-start;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
-    z-index: 1000;
-    padding: 1.2rem;
-    .modal-explorer {
-        width: 98%;
-        max-width: 1320px;
-        top: 40px;
-        height: 80%;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        padding: 0;
-        min-width: 960px;
-        position: relative;
-        background: #ffffff;
-        background-clip: padding-box;
-        margin: 0 auto;
-        .colset-explorer {
-            padding: 0;
-            height: 100%;
-            display: flex;
-        }
-        .head {
-            border-bottom: 1px solid #e4e4e4;
-            line-height: 40px;
-            padding: 0 16px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 40px;
-            right: 0;
-        }
-        .content {
-            position: absolute;
-            top: 41px;
-            bottom: 0;
-            right: 0;
-            left: 15px;
-            overflow: auto;
-        }
-        pre {
-            margin: 0;
-            padding: 0;
-            line-height: 24px;
-            font-size: 13px;
-        }
-    }
-
-    .times {
-        float: right;
-        padding: 15px 12px;
-        cursor: pointer;
-        font-size: 15px;
-    }
-}

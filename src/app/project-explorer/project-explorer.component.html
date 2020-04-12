@@ -1,0 +1,18 @@
+<div class="project-explorer" *ngIf="showExplorer">
+  <div class="container">
+    <div class="header d-flex">
+      <div class="p-1">
+        <strong>pom.xml</strong>
+      </div>
+      <div class=" p-1 pl-5 flex-grow-1">
+        <span (click)="downloadPom()">Download</span>
+      </div>
+      <div class="p-1 icon">
+        <i class="fas fa-times fa-lg" (click)="onClose()"></i>
+      </div>
+    </div>
+    <div class="content">
+      <pre>{{metaData.pom}}</pre>
+    </div>
+  </div>
+</div>

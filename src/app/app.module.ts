@@ -10,6 +10,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { PrdCommonModule } from './common/prd-common.module';
+import { ProjectExplorerComponent } from './project-explorer/project-explorer.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PrdCommonModule } from './common/prd-common.module';
     DependencyTileComponent,
     HomePageComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ProjectExplorerComponent
   ],
   imports: [
     BrowserModule,

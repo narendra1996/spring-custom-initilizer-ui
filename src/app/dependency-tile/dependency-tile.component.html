@@ -4,22 +4,33 @@
       *ngIf="showAll || (showSelected && d.selected) || (showFiltered && !d.selected && metaData.searchFilterText && metaData.searchFilterText.length >0 &&
     (metaData.dependencies.values[index].name.toLowerCase().indexOf(metaData.searchFilterText) != -1 ||
       d.name.toLowerCase().indexOf(metaData.searchFilterText) !=-1 || d.description.toLowerCase().indexOf(metaData.searchFilterText) !=-1 ))">
-      <div class="dependency-grid">
-        <a [ngClass]="{'checked': d.selected,'hovered': d.hovered && !d.selected}" (click)="onDependencySelect(index,j)"
-          (mouseenter)="hoverDependency(index,j)" (mouseleave)="hoverDependency(index,j)">
-          <div>
-            <input type="checkbox" value="custom-dependency">
-            <strong>{{d.name}}</strong>
-            <br>
-            <span>{{d.description}}</span>
-            <span class="icon">
-              <i *ngIf="d.hovered && !d.selected" class="fas fa-plus fa-sm plus"></i>
-              <i *ngIf="d.hovered && d.selected" class="fas fa-times fa-sm times"></i>
-              <i *ngIf="!d.hovered && d.selected" class="fas fa-check fa-sm check"></i>
-            </span>
-          </div>
-        </a>
+      <div class="dependency d-flex justify-content-between" [ngClass]="{'checked': d.selected,'hovered': d.hovered && !d.selected}"
+        (click)="onDependencySelect(index,j)" (mouseenter)="hoverDependency(index,j)"
+        (mouseleave)="hoverDependency(index,j)">
+        <div class="dependency-data align-self-center">
+          <strong>{{d.name}}</strong>
+          <br>
+          <span>{{d.description}}</span>
+        </div>
+        <div class="icon align-self-center">
+          <i *ngIf="!d.selected" class="fas fa-plus fa-sm plus"></i>
+          <i *ngIf="d.hovered && d.selected" class="fas fa-times fa-sm times"></i>
+          <i *ngIf="!d.hovered && d.selected" class="fas fa-check fa-sm check"></i>
+        </div>
       </div>
     </ng-container>
   </ng-container>
 </ng-container>
+<!-- <div class="dependency d-flex">
+  <div class="dependency-data" [ngClass]="{'checked': d.selected,'hovered': d.hovered && !d.selected}"
+    (click)="onDependencySelect(index,j)"(mouseenter)="hoverDependency(index,j)"(mouseleave)="hoverDependency(index,j)">
+    <strong>Name</strong>
+    <br>
+    <span>Facilitates contract-first SOAP development. Allows for the creation of flexible web services using one of the many ways to manipulate XML payloads.</span>
+  </div>
+  <div class="icon align-self-center">
+    <i *ngIf="d.hovered && !d.selected" class="fas fa-plus fa-sm plus"></i>
+    <i *ngIf="d.hovered && d.selected" class="fas fa-times fa-sm times"></i>
+    <i *ngIf="!d.hovered && d.selected" class="fas fa-check fa-sm check"></i>
+  </div>
+</div> -->

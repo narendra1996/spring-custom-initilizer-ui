@@ -3,9 +3,15 @@
     <div class="left">
     </div>
     <div class="right">
-      <div class="submit">
-        <button (click)="generateProject(true)" class="button primary" type="button" id="generate-project">Generate</button>
+      <div class="button-group d-flex">
+        <div class="generate">
+          <button (click)="generateProject()" class="primary">Generate-Project</button>
+        </div>
+        <div>
+          <button (click)="exploreProject()">Explore-Project</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
+<project-explorer *ngIf="showProjectExplorer"></project-explorer>

@@ -1,0 +1,39 @@
+.project-explorer {
+    background: rgba(255,255,255,0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    .container {
+        width: 80%;
+        top: 40px;
+        height: 80%;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        position: relative;
+        background: #ffffff;
+        margin: 0 auto;
+        .header {
+            border-bottom: 1px solid #e4e4e4;
+            .icon {
+                cursor: pointer;
+            }
+        }
+        .content {
+            position: absolute;
+            top: 41px;
+            bottom: 0;
+            right: 0;
+            left: 15px;
+            overflow: auto;
+        }
+        pre {
+            line-height: 24px;
+        }
+    }
+    span {
+        color: #0188ff;
+        cursor: pointer;
+    }
+}

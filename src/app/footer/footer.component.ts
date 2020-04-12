@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from '../common/common.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  metaData: any;
+  showProjectExplorer = false;
+
+  constructor(private commonService: CommonService) { }
 
   ngOnInit() {
+    this.metaData = this.commonService.getMetaData();
+  }
+
+  exploreProject() {
+    this.showProjectExplorer = true;
+    this.commonService.exploreProject();
+  }
+
+  generateProject() {
+    this.commonService.generateProject();
   }
 
 }
